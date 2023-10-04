@@ -10,9 +10,9 @@ export const Card = ({data})=>{
     return<>
     <div className="bg-[#F1F5FC] aspect-[3/4] border rounded-3xl shadow-md text-gray-500">
        <div className="flex flex-col">
-      <div className="mx-2 my-2 ">  <img src="logo192.png"
-            className=" w-full object-contain rounded-3xl  bg-slate-400 "
-            alt="" />
+      <div className="mx-2 my-2 ">  <img src={data.src}
+            className=" w-full object-cover h-56 rounded-3xl  bg-slate-400 "
+            alt="logo512.png" />
             </div>
         <div>
             <div className="flex justify-between items-center mx-4">

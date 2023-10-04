@@ -1,30 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
-// import { Card } from './Components/Card';
-// import { SearchBar } from './Components/SearchBar';
-// import { Pagination } from './Components/Pagination';
-import Data from './Components/Data.json'
-import { useState } from 'react';
-import { CarList } from './Components/CarLists';
-import { Pagination } from './Components/Pagination';
+import React from 'react';
+import './index.css';
+import { Routes,Route } from 'react-router-dom';
+import { Home } from './Components/Home';
+
 
 
 function App() {
-  // paginaiton 
-  const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setpostsPerPage] = useState(6);
-
-  const lastPostIndex = currentPage * postsPerPage;
-  const firstPostIndex = lastPostIndex - postsPerPage;
-  const currentPosts = Data.slice(firstPostIndex, lastPostIndex);
-
-
-
+  
   return (
 <>
-<CarList Data={currentPosts }/>
-   <Pagination totalPosts={Data.length} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage} currentPage={currentPage}/></>
+   <Routes>
+      <Route path='/' element={<Home/>}/> 
+      <Route path='/page/:pageNumber' element={<Home/>}/> 
+  </Routes>
+   
+   </>
   );
+
+  
 }
 
 export default App;
