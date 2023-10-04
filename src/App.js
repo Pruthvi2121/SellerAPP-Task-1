@@ -1,25 +1,29 @@
 import logo from './logo.svg';
 import './App.css';
-import { Card } from './Components/Card';
-import { SearchBar } from './Components/SearchBar';
+// import { Card } from './Components/Card';
+// import { SearchBar } from './Components/SearchBar';
+// import { Pagination } from './Components/Pagination';
+import Data from './Components/Data.json'
+import { useState } from 'react';
+import { CarList } from './Components/CarLists';
 import { Pagination } from './Components/Pagination';
 
+
 function App() {
+  // paginaiton 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage, setpostsPerPage] = useState(6);
+
+  const lastPostIndex = currentPage * postsPerPage;
+  const firstPostIndex = lastPostIndex - postsPerPage;
+  const currentPosts = Data.slice(firstPostIndex, lastPostIndex);
+
+
+
   return (
-    <div className='mt-4 min-h-screen w-full md:w-11/12 xl:w-8/12 mx-auto '>
-    <SearchBar/>
-    <div className='grid grid-cols-3  gap-4 mt-4 mx-auto w-full '>
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          
-    </div>
-    <Pagination/>
-    
-    </div>
+<>
+<CarList Data={currentPosts }/>
+   <Pagination totalPosts={Data.length} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage} currentPage={currentPage}/></>
   );
 }
 
